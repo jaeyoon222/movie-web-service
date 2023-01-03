@@ -7,11 +7,33 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script>
         const root = document.getElementById("root");
-        const span = React.createElement(
-            "span",
-            { className: "firstSpan" },
+        const h3 = React.createElement(
+            "h3",
+            {
+                className: "title",
+                onMouseEnter: () => {
+                    console.log("mouse entered !");
+                },
+            },
             "Hello World!"
         );
-        ReactDOM.render(span, root);
+        const button = React.createElement(
+            "button",
+            {
+                onClick: () => {
+                    console.log("clicked button !");
+                },
+                style: {
+                    backgroundColor: "orange",
+                },
+            },
+            "Click"
+        );
+        const container = React.createElement(
+            "div",
+            { className: "container" },
+            [h3, button]
+        );
+        ReactDOM.render(container, root);
     </script>
 </html>
