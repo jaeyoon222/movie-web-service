@@ -5,35 +5,33 @@
     </body>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
         const root = document.getElementById("root");
-        const h3 = React.createElement(
-            "h3",
-            {
-                className: "title",
-                onMouseEnter: () => {
-                    console.log("mouse entered !");
-                },
-            },
-            "Hello World!"
+        function Title() {
+            return (
+                <h3
+                    className="title"
+                    onMouseEnter={() => console.log("mouse entered !!")}
+                >
+                    Hello This is Title.
+                </h3>
+            );
+        }
+        const Button = () => (
+            <button
+                style={{ backgroundColor: "orange" }}
+                onClick={() => console.log("clicked button!!")}
+            >
+                click
+            </button>
         );
-        const button = React.createElement(
-            "button",
-            {
-                onClick: () => {
-                    console.log("clicked button !");
-                },
-                style: {
-                    backgroundColor: "orange",
-                },
-            },
-            "Click"
+        const container = (
+            <div>
+                <Title />
+                <Button />
+            </div>
         );
-        const container = React.createElement(
-            "div",
-            { className: "container" },
-            [h3, button]
-        );
-        ReactDOM.render(container, root);
+        ReactDOM.createRoot(root).render(container);
     </script>
 </html>
