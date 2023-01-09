@@ -7,31 +7,26 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-        const root = document.getElementById("root");
-        const Title = () => (
-            <h3
-                className="title"
-                onMouseEnter={() => console.log("mouse enterd !!")}
-            >
-                hello world
-            </h3>
-        );
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        let counter = 0;
 
-        const Button = () => (
-            <button
-                onClick={() => console.log("clicked button !!")}
-                style={{ backgroundColor: "orange" }}
-            >
-                click
-            </button>
-        );
+        function countUp() {
+            counter = counter + 1;
+            render();
+        }
+        function render() {
+            root.render(<Container />);
+        }
 
-        const Container = () => (
-            <div>
-                <Title />
-                <Button />
-            </div>
-        );
-        ReactDOM.createRoot(root).render(<Container />);
+        function Container() {
+            return (
+                <div>
+                    <h3>Total clicks : {counter} </h3>
+                    <button onClick={countUp}>Click me</button>
+                </div>
+            );
+        }
+
+        render();
     </script>
 </html>
